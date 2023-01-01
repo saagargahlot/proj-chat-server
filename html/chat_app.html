@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- All the script section will be in a separate js file -->
+    <title>Chat app</title>
+    <style>
+        body {
+            background: white;
+        }
+
+        /* adding distance from text field to buttons */
+        #userName {
+            margin-bottom: 5px;
+        }
+
+        #connect_as {
+            background-color: dodgerblue;
+            border: none;
+            border-radius: 4px;
+            color: black;
+        }
+
+        #chat-messages-heading {
+            margin-top: 10px;
+            margin-bottom: 1px;
+            visibility: hidden;
+
+        }
+
+        #chat-connect-info {
+            margin-top: 1px;
+            margin-bottom: 5px;
+            visibility: hidden;
+        }
+
+        /* adding distance from chat-message area */
+        #message {
+            font-size: 12px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 70%;
+            visibility: hidden;
+        }
+
+        #send_message {
+            background-color: dodgerblue;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            width: 50%;
+            visibility: hidden;
+        }
+
+        #clear_messages {
+            background-color: darkorange;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            width: 20%;
+            visibility: hidden;
+        }
+
+        /* Unordered list to display chat messages */
+        #chat-messages {
+            list-style-type: none;
+            padding-left: 0;  /* no indentation */
+            height: 110px;      /* default height */
+            margin-top: 10px;
+            margin-bottom: 5px;
+            overflow: auto;
+            visibility: hidden;
+        }
+
+        /* classes for different line items
+            to show private, self, and other messages */
+        .self {
+            color: blue;
+            padding-left: 5px;  /* self messages will be indented */
+        }
+
+        .others {
+            color: black;
+        }
+
+        .private {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<input type="text" id="userName" name="userNameTextField" value="" size="30" autofocus/>
+<input type="button" id="connect_as" value="Connect As">
+
+<div id="chat-messages-heading">
+    Messages:
+</div>
+
+<!-- Used for displaying server acknowledgement -->
+<div id="chat-connect-info">
+</div>
+
+<br>
+
+<ul id="chat-messages">
+</ul>
+
+
+<!-- https://stackoverflow.com/questions/108207/how-do-i-make-an-html-text-box-show-a-hint-when-empty -->
+<input type="text" id="message" name="messageTextField" value="" placeholder="Send a message"/>
+<br>
+    <input type="button" id="send_message" value="Send Message">
+    <input type="button" id="clear_messages" value="Clear">
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src='chat-socket_io.js'></script>
+<script src='chat-buttonHandler.js'></script>
+<script src='chat-login_user.js'></script>
+<script src='eventListener.js'></script>
+</body>
+</html>
